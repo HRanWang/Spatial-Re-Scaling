@@ -17,4 +17,4 @@ python2 main.py -d market -b 48 -j 4 --epochs 100 --log logs/market/ --combine-t
 also, you can just download a trained [weight file](https://pan.baidu.com/s/1mQkjrJMa1KQmaHax1kAjsw) from BaiduPan 提取码: wwjv
 
 # Results
-![](https://github.com/schizop/SA/results/six_person.jpg) 
+![](https://github.com/schizop/SA/blob/master/results/result.jpg) 

@@ -14,3 +14,4 @@ if you are going to train on the dataset of market-1501, run:
 ```
 python2 main.py -d market -b 48 -j 4 --epochs 100 --log logs/market/ --combine-trainval --step-size 40 --data-dir Market-1501
 ```
+also, you can just download a trained [weight file](https://pan.baidu.com/s/1mQkjrJMa1KQmaHax1kAjsw) from BaiduPan 提取码: wwjv

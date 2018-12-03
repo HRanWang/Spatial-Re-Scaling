@@ -6,7 +6,7 @@ Our code is mainly based on [PCB](https://github.com/syfafterzy/PCB_RPP_for_reID
 ![](https://github.com/schizop/SA/blob/master/network/network.png) 
 
 # Preparation
-Prerequisite: Python 2.7 and Pytorch 0.4.0
+Prerequisite: Python 2.7 and Pytorch 0.4.0(we run the code under version 0.4.0, maybe versions <= 0.4.0 also work.)
 ## Dataset
 [Market-1501](https://pan.baidu.com/s/1qlCJEdEY7UueGL-VdhH6xw)  提取码: 1ri5
   
@@ -20,3 +20,7 @@ also, you can just download a trained [weight file](https://pan.baidu.com/s/1mQk
 
 # Results
 ![](https://github.com/schizop/SA/blob/master/results/result.jpg) 
+
+# Citiaion
+
+Please cite these papers in your publications if it helps your research:

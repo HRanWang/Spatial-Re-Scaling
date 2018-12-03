@@ -5,7 +5,7 @@ Our code is mainly based on [PCB](https://github.com/syfafterzy/PCB_RPP_for_reID
 
 # Preparation
 Prerequisite: Python 2.7 and Pytorch 0.4.0
-##Dataset
+## Dataset
   [Market-1501]（https://pan.baidu.com/s/1qlCJEdEY7UueGL-VdhH6xw） 提取码: 1ri5
   
 # Training

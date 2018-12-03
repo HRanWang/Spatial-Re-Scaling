@@ -3,7 +3,7 @@ This is the code about the arxiv paper "parameter-free spatial attention network
 
 Our code is mainly based on [PCB](https://github.com/syfafterzy/PCB_RPP_for_reID)
 ## Network
-![](https://github.com/schizop/SA/blob/master/network/network.pdf) 
+![](https://github.com/schizop/SA/blob/master/network/network.png) 
 
 # Preparation
 Prerequisite: Python 2.7 and Pytorch 0.4.0

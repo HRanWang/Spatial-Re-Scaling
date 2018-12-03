@@ -1,7 +1,7 @@
 # SA
 This is the code about the arxiv paper "parameter-free spatial attention network for Person Re-Identification"
 
-Our code is mainly based on PCB
+Our code is mainly based on PCB(https://github.com/syfafterzy/PCB_RPP_for_reID)
 
 # Preparation
 Prerequisite: Python 2.7 and Pytorch 0.4.0

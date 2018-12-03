@@ -24,3 +24,9 @@ also, you can just download a trained [weight file](https://pan.baidu.com/s/1mQk
 # Citiaion
 
 Please cite these papers in your publications if it helps your research:
+@misc{1811.12150,
+Author = {Haoran Wang and Yue Fan and Zexin Wang and Licheng Jiao and Bernt Schiele},
+Title = {Parameter-Free Spatial Attention Network for Person Re-Identification},
+Year = {2018},
+Eprint = {arXiv:1811.12150},
+}

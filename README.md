@@ -26,9 +26,9 @@ also, you can just download a trained [weight file](https://pan.baidu.com/s/1mQk
 
 Please cite the paper if it helps your research:  
 
-@misc{1811.12150,  
-Author = {Haoran Wang and Yue Fan and Zexin Wang and Licheng Jiao and Bernt Schiele},  
-Title = {Parameter-Free Spatial Attention Network for Person Re-Identification},  
-Year = {2018},  
-Eprint = {arXiv:1811.12150},  
+@article{wang2018parameter,
+  title={Parameter-Free Spatial Attention Network for Person Re-Identification},
+  author={Wang, Haoran and Fan, Yue and Wang, Zexin and Jiao, Licheng and Schiele, Bernt},
+  journal={arXiv preprint arXiv:1811.12150},
+  year={2018}
 }

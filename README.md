@@ -25,10 +25,11 @@ also, you can just download a trained [weight file](https://pan.baidu.com/s/1mQk
 # Citiaion
 
 Please cite the paper if it helps your research:  
-
+"""
 @article{wang2018parameter,
   title={Parameter-Free Spatial Attention Network for Person Re-Identification},
   author={Wang, Haoran and Fan, Yue and Wang, Zexin and Jiao, Licheng and Schiele, Bernt},
   journal={arXiv preprint arXiv:1811.12150},
   year={2018}
 }
+"""

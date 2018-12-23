@@ -42,10 +42,6 @@ def cmc(distmat, query_ids=None, gallery_ids=None,
     # Sort and find correct matches
     indices = np.argsort(distmat, axis=1)
 
-    print indices.shape
-    print indices[0]
-    print gallery_ids.shape
-    print query_ids.shape
     top1 = 0.
     for i in range(len(query_ids)):
         rank1 = indices[i][0]
@@ -58,15 +54,10 @@ def cmc(distmat, query_ids=None, gallery_ids=None,
             # print query_ids[i],gallery_ids[rank1]
             write('train_nocam_nosa.log','img: '+str(i)+' '+'query num: '+str(query_ids[i])+': '+str(gallery_ids[rank1])+' '+str(gallery_ids[rank2])+' '+str(gallery_ids[rank3])+' '+str(gallery_ids[rank4])+' '+str(gallery_ids[rank5])+' location: '+str(rank1)+'\r')
         else:
-            print query_ids[i], gallery_ids[rank1]
+            # print query_ids[i], gallery_ids[rank1]
             write('train_nocam_nosa.log','wrong'+' '+'img: '+str(i)+' '+'query num: '+str(query_ids[i])+': '+str(gallery_ids[rank1])+' '+str(gallery_ids[rank2])+' '+str(gallery_ids[rank3])+' '+str(gallery_ids[rank4])+' '+str(gallery_ids[rank5])+' location: '+str(rank1)+'\r')
-    print top1
-    print 'top1:',top1/len(query_ids)
 
-    print gallery_ids.shape,query_ids.shape
     matches = (gallery_ids[indices] == query_ids[:, np.newaxis])
-    print matches
-    print matches.shape
     # Compute CMC for each query
     ret = np.zeros(topk)
     num_valid_queries = 0

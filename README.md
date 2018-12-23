@@ -23,6 +23,10 @@ python2 main.py -d market -b 48 -j 4 --log logs/market/ --combine-trainval --ste
 ```
 
 # Results
+![](https://github.com/schizop/SA/blob/master/results/sota.png) 
+
+We achieved the state-of-the-art on four benchmarks as is shown in Table 1 (11. Nov. 2018).
+
 ![](https://github.com/schizop/SA/blob/master/results/result.jpg) 
 
 # Ablation Study

@@ -25,6 +25,12 @@ python2 main.py -d market -b 48 -j 4 --log logs/market/ --combine-trainval --ste
 # Results
 ![](https://github.com/schizop/SA/blob/master/results/result.jpg) 
 
+# Ablation Study
+We have upload an example for ablation study with/out SA2 in the paper, for the backbone or some others, random erasing is cut off, also, dropout should be noticed according to your own experiments, and, 60 epochs is enough: 
+```
+python2 main.py -d market -b 48 -j 4 --epochs 60 --log logs/market/ --combine-trainval --step-size 40 --data-dir Market-1501
+```
+
 # Citiaion
 
 Please cite the paper if it helps your research:  

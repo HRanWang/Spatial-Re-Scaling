@@ -88,7 +88,7 @@ def main(args):
 
     # Create model
     model = models.create(args.arch, num_features=args.features,
-                          dropout=args.dropout, num_classes=num_classes,cut_at_pooling=False, FCN=True)
+                          dropout=args.dropout, num_classes=num_classes)
 
     # Load from checkpoint
     start_epoch = best_top1 = 0

@@ -29,7 +29,7 @@ We achieved the state-of-the-art on four benchmarks as is shown in Table 1 (11. 
 
 ![](https://github.com/schizop/SA/blob/master/results/result.jpg) 
 
-Here we show 4 example to compare the class activation maps ([CAM](https://arxiv.org/abs/1512.04150)) of plain GAP and GAP with SA. From left to right are the original image, the CAM from plain GAP and the CAM from GAP with SA. 
+Here we show 6 examples to compare the class activation maps ([CAM](https://arxiv.org/abs/1512.04150)) of plain GAP and GAP with SA. From left to right are the original image, the CAM from plain GAP and the CAM from GAP with SA. 
 
 We see that the highlighted area from plain GAP is always concentrated to some parts of the object, which may suffer from the absence of that feature due to some occlusion and view point changing. With the help of the spatial attention, the focus of the model is distributed all over the image, providing the classifier more details of the object, which increases the model robustness.
 

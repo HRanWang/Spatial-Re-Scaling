@@ -6,6 +6,11 @@ We propose a modification to the global average pooling called **spatial attenti
 ## Network
 ![](https://github.com/schizop/SA/blob/master/network/network.png) 
 
+The proposed architecture formulates the task as a **classification**. It consists of four components. The yellow region represents the
+backbone feature extractor. The red region represents the deeply supervised branches (DS). The blue region represents six part classifiers
+(P). The two green region represents two sets of spatial attention layers (SA), SA1 is not used for the main results. It only appears in
+the ablation study. Then the total loss is the summation over all deep supervision losses, six part losses and the loss from the backbone. Note that the spatial attention is only added before GAP.
+
 # Preparation
 Prerequisite: Python 2.7 and Pytorch 0.4.0(we run the code under version 0.4.0, maybe versions <= 0.4.0 also work.)
 ## Dataset

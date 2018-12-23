@@ -46,7 +46,7 @@ def get_data(name, data_dir, height, width, batch_size, workers):
 
     train_loader = DataLoader(
         Preprocessor(dataset.train, root=osp.join(dataset.images_dir,dataset.train_path),
-                    transform=train_transformer,random_mask=True),
+                    transform=train_transformer,random_mask=False),
         batch_size=batch_size, num_workers=workers,
         shuffle=True, pin_memory=True, drop_last=True)
 

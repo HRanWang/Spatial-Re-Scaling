@@ -24,7 +24,7 @@ python2 main.py -d market -b 48 -j 4 --epochs 100 --log logs/market/ --combine-t
 ```
 also, you can just download a trained [weight file](https://pan.baidu.com/s/1mQkjrJMa1KQmaHax1kAjsw) from BaiduYun (password: wwjv), and put it into model folder, which should be like 'model/checkpoint.pth.tar', then run:
 ```
-python2 main.py -d market -b 48 -j 4 --log logs/market/ --combine-trainval --step-size 40 --data-dir Market-1501 --resume ./model/checkpoint.pth.tar 
+python2 main.py -d market -b 48 -j 4 --log logs/market/ --combine-trainval --step-size 40 --data-dir Market-1501 --resume ./model/checkpoint.pth.tar --evaluate
 ```
 
 # Results
@@ -44,7 +44,7 @@ In order to demonstrate the effectiveness of the spatial attention layer. We are
 ## Person Re-ID:
 Besides the ones in the paper, we uploaded another example for the ablation of the SA for the backbone model on Market-1501. Random erasing is cut off for the simplicity. The training epoch is set as 60.
 ```
-python2 main.py -d market -b 48 -j 4 --epochs 60 --log logs/market/ --feature 256 --combine-trainval --step-size 40 --data-dir Market-1501
+python2 main.py -d market -b 48 -j 4 --epochs 60 --log logs/market/ --feature 256 --height 384 --width 128 --combine-trainval --step-size 40 --data-dir Market-1501
 ```
 ## Classification:
 ### Cifar 100:

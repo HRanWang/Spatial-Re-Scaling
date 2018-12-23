@@ -44,7 +44,7 @@ In order to demonstrate the effectiveness of the spatial attention layer. We are
 ## Person Re-ID:
 Besides the ones in the paper, we uploaded another example for the ablation of the SA for the backbone model on Market-1501. Random erasing is cut off for the simplicity. The training epoch is set as 60.
 ```
-python2 main.py -d market -b 48 -j 4 --epochs 60 --log logs/market/ --combine-trainval --step-size 40 --data-dir Market-1501
+python2 main.py -d market -b 48 -j 4 --epochs 60 --log logs/market/ --feature 256 --combine-trainval --step-size 40 --data-dir Market-1501
 ```
 ## Classification:
 ### Cifar 100:

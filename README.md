@@ -29,11 +29,20 @@ We achieved the state-of-the-art on four benchmarks as is shown in Table 1 (11. 
 
 ![](https://github.com/schizop/SA/blob/master/results/result.jpg) 
 
+Here we show 4 example to compare the class activation maps ([CAM](https://arxiv.org/abs/1512.04150)) of plain GAP and GAP with SA. From left to right are the original image, the CAM from plain GAP and the CAM from GAP with SA. 
+
+We see that the highlighted area from plain GAP is always concentrated to some parts of the object, which may suffer from the absence of that feature due to some occlusion and view point changing. With the help of the spatial attention, the focus of the model is distributed all over the image, providing the classifier more details of the object, which increases the model robustness.
+
 # Ablation Study
-We have upload an example for ablation study with/out SA1 in the paper, for the backbone or some others, random erasing is cut off, also, 60 epochs is enough: 
+In order to demonstrate the effectiveness of the spatial attention layer. We are now working on more examples for the ablation study. Each example inside the folder *ablation* is independent of the rest of the snippets.
+
+## Person Re-ID:
+Besides the ones in the paper, we uploaded another example for the ablation of the SA for the backbone model on Market-1501. Random erasing is cut off for the simplicity. The training epoch is set as 60.
 ```
 python2 main.py -d market -b 48 -j 4 --epochs 60 --log logs/market/ --combine-trainval --step-size 40 --data-dir Market-1501
 ```
+## Classification:
+### Cifar 100:
 
 # Citiaion
 

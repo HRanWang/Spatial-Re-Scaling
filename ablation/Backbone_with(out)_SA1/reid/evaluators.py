@@ -7,8 +7,8 @@ import torch
 from .evaluation_metrics import cmc, mean_ap
 from .feature_extraction import extract_cnn_feature
 from .utils.meters import AverageMeter
-from .re_ranking_feature import re_ranking
-import numpy as np
+
+
 def extract_features(model, data_loader, print_freq=10):
     model.eval()
     batch_time = AverageMeter()
@@ -16,7 +16,7 @@ def extract_features(model, data_loader, print_freq=10):
 
     features = OrderedDict()
     labels = OrderedDict()
-    features_list = []
+
     end = time.time()
     for i, (imgs, fnames, pids, _) in enumerate(data_loader):
         data_time.update(time.time() - end)
@@ -25,7 +25,7 @@ def extract_features(model, data_loader, print_freq=10):
         for fname, output, pid in zip(fnames, outputs, pids):
             features[fname] = output
             labels[fname] = pid
-            features_list.append(output.numpy())
+
         batch_time.update(time.time() - end)
         end = time.time()
 
@@ -37,7 +37,7 @@ def extract_features(model, data_loader, print_freq=10):
                           batch_time.val, batch_time.avg,
                           data_time.val, data_time.avg))
 
-    return features, labels,features_list
+    return features, labels
 
 
 def pairwise_distance(query_features, gallery_features, query=None, gallery=None):
@@ -111,13 +111,8 @@ class Evaluator(object):
 
     def evaluate(self, query_loader, gallery_loader, query, gallery):
         print('extracting query features\n')
-        query_features, _ ,query_list= extract_features(self.model, query_loader)
+        query_features, _ = extract_features(self.model, query_loader)
         print('extracting gallery features\n')
-        gallery_features, _ ,gallery_list= extract_features(self.model, gallery_loader)
-######## re-ranking ########
-        # query_list = np.array(query_list)
-        # gallery_list = np.array(gallery_list)
-        # distmat = re_ranking(query_list,gallery_list)
-######## re-ranking ########
+        gallery_features, _ = extract_features(self.model, gallery_loader)
         distmat = pairwise_distance(query_features, gallery_features, query, gallery)
         return evaluate_all(distmat, query=query, gallery=gallery)

@@ -5,30 +5,10 @@ from torch.nn import functional as F
 from torch.nn import init
 import torchvision
 import torch
-
+#from torch_deform_conv.layers import ConvOffset2D
 __all__ = ['ResNet', 'resnet18', 'resnet34', 'resnet50', 'resnet101',
            'resnet152']
 
-class SpatialAttn(nn.Module):
-    """Spatial Attention (Sec. 3.1.I.1)"""
-    def __init__(self):
-        super(SpatialAttn, self).__init__()
-        # self.conv1 = ConvBlock(1, 1, 3, s=2, p=1)
-        # self.conv2 = ConvBlock(1, 1, 1)
-
-    def forward(self, x):
-        # global cross-channel averaging # 32,2048,24,8
-        x = x.mean(1, keepdim=True)  # 32,1,24,8
-        h = x.size(2)
-        w = x.size(3)
-        x = x.view(x.size(0),-1)     # 32,192
-        z = x
-        for b in range(x.size(0)):
-            # print z[b]
-            z[b] /= torch.sum(z[b])
-            # print z[b]
-        z = z.view(x.size(0),1,h,w)
-        return z
 
 class ResNet(nn.Module):
     __factory = {
@@ -60,7 +40,7 @@ class ResNet(nn.Module):
                     mo.stride = (1,1)
 #================append conv for FCN==============================#
             self.num_features = num_features
-            self.num_classes = 767 #num_classes
+            self.num_classes = 751 #num_classes
             self.dropout = dropout
             out_planes = self.base.fc.in_features
             self.local_conv = nn.Conv2d(out_planes, self.num_features, kernel_size=1,padding=0,bias=False)
@@ -70,10 +50,7 @@ class ResNet(nn.Module):
             init.constant(self.feat_bn2d.weight,1) #initialize BN, may not be used
             init.constant(self.feat_bn2d.bias,0) # iniitialize BN, may not be used
 
-            # self.offset = ConvOffset2D(256)
-            self.soft4 = SpatialAttn()
-
-            ##---------------------------stripe1----------------------------------------------#
+##---------------------------stripe1----------------------------------------------#
             self.instance0 = nn.Linear(self.num_features, self.num_classes)
             init.normal(self.instance0.weight, std=0.001)
             init.constant(self.instance0.bias, 0)
@@ -149,14 +126,9 @@ class ResNet(nn.Module):
         if self.FCN:
             y = x.unsqueeze(1)
             y = F.avg_pool3d(x,(16,1,1)).squeeze(1)
-
-            x_attn4 = self.soft4(x)
-            x = x*x_attn4
-
             sx = x.size(2)/6
             kx = x.size(2)-sx*5
             x = F.avg_pool2d(x,kernel_size=(kx,x.size(3)),stride=(sx,x.size(3)))   # H4 W8
-            # print sx,kx,x.size()
 #========================================================================#
 
             out0 = x.view(x.size(0),-1)
@@ -166,58 +138,15 @@ class ResNet(nn.Module):
             out1 = x/x.norm(2,1).unsqueeze(1).expand_as(x)
             x = self.feat_bn2d(x)
             x = F.relu(x) # relu for local_conv feature
+            x6 = F.avg_pool2d(x, kernel_size=(6, 1), stride=(1, 1))
 
-            x = x.chunk(6,2)
-            x0 = x[0].contiguous().view(x[0].size(0),-1)
-            x1 = x[1].contiguous().view(x[1].size(0),-1)
-            x2 = x[2].contiguous().view(x[2].size(0),-1)
-            x3 = x[3].contiguous().view(x[3].size(0),-1)
-            x4 = x[4].contiguous().view(x[4].size(0),-1)
-            x5 = x[5].contiguous().view(x[5].size(0),-1)
-            c0 = self.instance0(x0)
-            c1 = self.instance1(x1)
-            c2 = self.instance2(x2)
-            c3 = self.instance3(x3)
-            c4 = self.instance4(x4)
-            c5 = self.instance5(x5)
-            return out0, (c0, c1, c2, c3, c4, c5)
+            x6 = x6.contiguous().view(x6.size(0), -1)
+
+            c6 = self.instance6(x6)
+            return out0, c6
 
 #==========================================================#
-# =======================DCN===============================#
-#         if self.FCN:
-#             y = x.unsqueeze(1)
-#             y = F.avg_pool3d(x, (16, 1, 1)).squeeze(1)
-#             sx = x.size(2) / 6
-#             kx = x.size(2) - sx * 5
-#             x = F.avg_pool2d(x, kernel_size=(kx, x.size(3)), stride=(sx, x.size(3)))  # H4 W8
-#             # print sx,kx,x.size()
-#             # ========================================================================#
-#
-#             out0 = x.view(x.size(0), -1)
-#             out0 = x / x.norm(2, 1).unsqueeze(1).expand_as(x)
-#             x = self.drop(x)
-#             x = self.local_conv(x)
-#             x = self.offset(x)
-#             out1 = x / x.norm(2, 1).unsqueeze(1).expand_as(x)
-#             x = self.feat_bn2d(x)
-#             x = F.relu(x)  # relu for local_conv feature
-#
-#             x = x.chunk(6, 2)
-#             x0 = x[0].contiguous().view(x[0].size(0), -1)
-#             x1 = x[1].contiguous().view(x[1].size(0), -1)
-#             x2 = x[2].contiguous().view(x[2].size(0), -1)
-#             x3 = x[3].contiguous().view(x[3].size(0), -1)
-#             x4 = x[4].contiguous().view(x[4].size(0), -1)
-#             x5 = x[5].contiguous().view(x[5].size(0), -1)
-#             c0 = self.instance0(x0)
-#             c1 = self.instance1(x1)
-#             c2 = self.instance2(x2)
-#             c3 = self.instance3(x3)
-#             c4 = self.instance4(x4)
-#             c5 = self.instance5(x5)
-#             return out0, (c0, c1, c2, c3, c4, c5)
 
-# ==========================================================#
 
         x = F.avg_pool2d(x, x.size()[2:])
         x = x.view(x.size(0), -1)

@@ -77,7 +77,7 @@ class Trainer(BaseTrainer):
         if isinstance(self.criterion, torch.nn.CrossEntropyLoss):
             loss_layer4 = self.criterion(outputs[1], targets)
 
-            prec, = accuracy(outputs[1].data, targets.data)
+            prec, = accuracy(outputs[1][2].data, targets.data)
             prec = prec[0]
                         
         elif isinstance(self.criterion, OIMLoss):

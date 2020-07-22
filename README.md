@@ -1,6 +1,6 @@
 # Simple and Effective: Spatial Re-Scaling for Person Re-Identification
 
-We propose a modification to the global average pooling called **spatial attention** which shows a consistent improvement in the generic classfication tasks. Currently the experiments are only conducted on the Person-ReID tasks (which is formulated into a fine-grained classification problem). Our code is mainly based on [PCB](https://github.com/syfafterzy/PCB_RPP_for_reID).
+We propose a modification to the global average pooling called **spatial Re-Scaling** which shows a consistent improvement in the generic classfication tasks. Currently the experiments are only conducted on the Person-ReID tasks (which is formulated into a fine-grained classification problem). Our code is mainly based on [PCB](https://github.com/syfafterzy/PCB_RPP_for_reID).
 
 ## Network
 ![](https://github.com/schizop/SA/blob/master/network/network.png) 

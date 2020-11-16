@@ -2,6 +2,26 @@
 
 We propose a modification to the global average pooling called **spatial Re-Scaling** which shows a consistent improvement in the generic classfication tasks. Currently the experiments are only conducted on the Person-ReID tasks (which is formulated into a fine-grained classification problem). Our code is mainly based on [PCB](https://github.com/syfafterzy/PCB_RPP_for_reID).
 
+## Citation
+If you find this code useful for your research, please consider citing the following papers:
+
+@ARTICLE{9229188,
+  author={H. {Wang} and L. {Jiao} and S. {Yang} and L. {Li} and Z. {Wang}},
+  journal={IEEE Transactions on Neural Networks and Learning Systems}, 
+  title={Simple and Effective: Spatial Rescaling for Person Reidentification}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={1-12},
+  doi={10.1109/TNNLS.2020.3027589}}
+ 
+@article{wang2018parameter,
+  title={Parameter-free spatial attention network for person re-identification},
+  author={Wang, Haoran and Fan, Yue and Wang, Zexin and Jiao, Licheng and Schiele, Bernt},
+  journal={arXiv preprint arXiv:1811.12150},
+  year={2018}
+}
+
 ## Network
 ![](https://github.com/schizop/SA/blob/master/network/network.png) 
 

@@ -5,8 +5,8 @@ We propose a modification to the global average pooling called **spatial Re-Scal
 ## Citation
 If you find this code useful for your research, please consider citing the following papers:
 
-@ARTICLE{9229188,
-  author={H. {Wang} and L. {Jiao} and S. {Yang} and L. {Li} and Z. {Wang}},
+@ARTICLE{9229188,  
+  author={H. {Wang} and L. {Jiao} and S. {Yang} and L. {Li} and Z. {Wang}},  
   journal={IEEE Transactions on Neural Networks and Learning Systems}, 
   title={Simple and Effective: Spatial Rescaling for Person Reidentification}, 
   year={2020},
